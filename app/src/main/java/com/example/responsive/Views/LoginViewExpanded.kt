@@ -10,8 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.responsive.viewModel.AppModel
 
+
 @Composable
-fun LaunchScreen(navController: NavController, viewModel: AppModel) {
+fun LoginExpanded(navController: NavController, viewModel: AppModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()

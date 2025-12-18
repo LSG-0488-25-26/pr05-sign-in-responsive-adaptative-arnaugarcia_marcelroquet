@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import com.example.responsive.viewModel.AppModel
 
 @Composable
-fun LaunchScreen(navController: NavController, viewModel: AppModel) {
+fun Register(navController: NavController, viewModel: AppModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()

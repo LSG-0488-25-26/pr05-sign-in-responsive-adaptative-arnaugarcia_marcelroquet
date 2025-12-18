@@ -3,10 +3,8 @@ package com.example.responsive.Views
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.example.responsive.Routes
 import com.example.responsive.viewModel.AppModel
 
@@ -23,11 +21,11 @@ fun EntryPoint(navigationController: NavController, viewModel: AppModel) {
         }
 
         composable(Routes.LogInView.route) {
-            LogIn(navigationController, viewModel)
+            LoginCompact(navigationController, viewModel)
         }
 
         composable(Routes.SingUpView.route) {
-            SingUpView(navigationController, viewModel)
+            RegisterCompact(navigationController, viewModel)
         }
 
     }

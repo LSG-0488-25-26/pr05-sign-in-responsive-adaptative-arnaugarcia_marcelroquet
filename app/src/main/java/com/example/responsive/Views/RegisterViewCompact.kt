@@ -8,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-
+import com.example.responsive.viewModel.AppModel
 
 @Composable
-fun LogIn(navController: NavController) {
+fun Register(navController: NavController, viewModel: AppModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()

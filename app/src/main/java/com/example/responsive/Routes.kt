@@ -2,14 +2,10 @@ package com.example.responsive
 
 
 sealed class Routes(val route: String) {
+    object LogInView : Routes("LogInView")
+
+    object SingUpView : Routes("SingUpView")
+
     object LaunchScreenView : Routes("LaunchScreenView")
-
-    object MenuScreenView : Routes("MenuScreenView")
-
-    object GameScreenView : Routes("GameScreenView")
-
-    object ResultScreenView : Routes("ResultScreenView") {
-
-    }
 
 }

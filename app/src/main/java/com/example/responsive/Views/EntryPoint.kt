@@ -7,11 +7,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.trivialapp.Routes
-import com.example.trivialapp.viewmodel.TrivialViewModel
+import com.example.responsive.Routes
+import com.example.responsive.viewModel.AppModel
+
 
 @Composable
-fun EntryPoint(navigationController: NavController, viewModel: TrivialViewModel) {
+fun EntryPoint(navigationController: NavController, viewModel: AppModel) {
     NavHost(
         navController = navigationController as NavHostController,
         startDestination = Routes.LaunchScreenView.route
@@ -21,16 +22,13 @@ fun EntryPoint(navigationController: NavController, viewModel: TrivialViewModel)
             LaunchScreen(navigationController)
         }
 
-        composable(Routes.MenuScreenView.route) {
-            MenuScreen(navigationController, viewModel)
+        composable(Routes.LogInView.route) {
+            LogIn(navigationController, viewModel)
         }
 
-        composable(Routes.GameScreenView.route) {
-            GameScreen(navigationController, viewModel)
+        composable(Routes.SingUpView.route) {
+            SingUpView(navigationController, viewModel)
         }
 
-        composable(Routes.ResultScreenView.route) {
-            ResultsScreen(navigationController, viewModel)
-        }
     }
 }

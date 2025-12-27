@@ -12,7 +12,7 @@ import com.example.responsive.Routes
 import com.example.responsive.viewModel.AppModel
 
 @Composable
-fun RegisterMedium(navController: NavController, viewModel: AppModel) {
+fun LaunchScreenExpanded(navController: NavController, viewModel: AppModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()

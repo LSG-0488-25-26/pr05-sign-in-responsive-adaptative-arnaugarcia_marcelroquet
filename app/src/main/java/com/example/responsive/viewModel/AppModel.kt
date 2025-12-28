@@ -46,6 +46,7 @@ class AppModel : ViewModel() {
             password.value.length < 6 -> "password required 6 digits"
             password.value != confirmPassword.value -> "Passwords do not match."
             !acceptTerms.value -> "You must accept terms and conditions."
+            registeredUsers.any { it.email == email.value } -> "Email already exists"
             else -> ""
         }
         if (errorMessage.value.isEmpty()) {

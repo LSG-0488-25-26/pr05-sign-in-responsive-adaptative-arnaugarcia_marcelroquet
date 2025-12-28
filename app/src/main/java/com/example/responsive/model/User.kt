@@ -1,7 +1,7 @@
 package com.example.responsive.model
 
 data class User(
-    val id: String = "",
+    val id: Int,
     val fullName: String = "",
     val birthDate: String = "",
     val email: String = "",

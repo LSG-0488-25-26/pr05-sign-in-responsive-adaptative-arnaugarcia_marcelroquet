@@ -123,7 +123,7 @@ fun LaunchScreenCompact(navController: NavController, viewModel: AppModel) {
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                         Text(
-                                            text = currentUser.value.fullName,
+                                            text = currentUser.value.birthDate,
                                             style = MaterialTheme.typography.bodyLarge
                                         )
                                     }

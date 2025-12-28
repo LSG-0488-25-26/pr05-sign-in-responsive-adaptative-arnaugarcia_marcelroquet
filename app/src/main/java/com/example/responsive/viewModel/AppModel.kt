@@ -22,6 +22,19 @@ class AppModel : ViewModel() {
     private val _registeredUsers = mutableStateOf<List<User>>(emptyList())
     val registeredUsers: List<User> get() = _registeredUsers.value
 
+    var currentUser = mutableStateOf(
+        User(
+            id = -1,
+            fullName = "",
+            birthDate = "",
+            email = "",
+            phone = "",
+            username = "",
+            password = "",
+            acceptTerms = false
+        )
+    )
+
     // validació
     fun validateRegister(): String {
         errorMessage.value = when {
@@ -41,20 +54,41 @@ class AppModel : ViewModel() {
         return errorMessage.value
     }
 
-    fun validateLogin(): String
-    {
-        errorMessage.value = when{
-            email.value.isEmpty() || !email.value.contains("@") -> "invalid email"
-            else -> "Unknown error"
+    fun validateLogin(): String {
+        errorMessage.value = ""
+
+        if (email.value.isEmpty() || !email.value.contains("@")) {
+            errorMessage.value = "Invalid email"
+            return errorMessage.value
         }
+
+        if (password.value.isEmpty()) {
+            errorMessage.value = "Password required"
+            return errorMessage.value
+        }
+
+        for (user in registeredUsers) {
+            if (user.email == email.value) {
+                if (user.password == password.value) {
+                    currentUser.value = user
+                    errorMessage.value = ""
+                    return errorMessage.value
+                } else {
+                    errorMessage.value = "Incorrect password or invalid email"
+                    return errorMessage.value
+                }
+            }
+        }
+
+        errorMessage.value = "User not found"
         return errorMessage.value
     }
 
-    fun registerUser(){
+    fun registerUser() {
 
         var idActual = 0
         // si hi ha usuaris agafar el id del últim  i sumar 1 per el nou ID
-        if (!registeredUsers.isEmpty()){
+        if (!registeredUsers.isEmpty()) {
             idActual = registeredUsers.get(registeredUsers.size - 1).id
             idActual += 1;
         }
@@ -84,6 +118,27 @@ class AppModel : ViewModel() {
         password.value = ""
         confirmPassword.value = ""
         acceptTerms.value = false
+    }
+    fun cleanError(){
+        errorMessage.value = ""
+    }
+    fun logout() {
+        currentUser.value = User(
+            id = -1,
+            fullName = "",
+            birthDate = "",
+            email = "",
+            phone = "",
+            username = "",
+            password = "",
+            acceptTerms = false
+        )
+        email.value = ""
+        password.value = ""
+    }
+    fun cleanValues(){
+        email.value = ""
+        password.value = ""
     }
 
 }

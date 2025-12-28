@@ -19,6 +19,7 @@ fun RegisterCompact(
     navController: NavController,
     viewModel: AppModel
 ) {
+    viewModel.cleanValues()
     val scrollState = rememberScrollState()
 
     BoxWithConstraints(

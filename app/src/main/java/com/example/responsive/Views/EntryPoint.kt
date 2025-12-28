@@ -1,5 +1,6 @@
 package com.example.responsive.Views
 
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -10,51 +11,59 @@ import com.example.responsive.viewModel.AppModel
 
 
 @Composable
-fun EntryPoint(navigationController: NavController, viewModel: AppModel) {
+fun EntryPoint(
+    navigationController: NavController,
+    viewModel: AppModel,
+    windowSizeClass: WindowSizeClass
+) {
+
+    val startDestination = when (windowSizeClass.widthSizeClass) {
+        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Compact ->
+            Routes.RegisterViewCompact.route
+
+        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Medium ->
+            Routes.RegisterViewMedium.route
+
+        else ->
+            Routes.RegisterViewExpanded.route
+    }
+
     NavHost(
         navController = navigationController as NavHostController,
-        startDestination = Routes.LaunchScreenViewCompact.route
+        startDestination = startDestination
     ) {
 
-        // LaunchScreen views
+        // Launch
         composable(Routes.LaunchScreenViewCompact.route) {
             LaunchScreenCompact(navigationController, viewModel)
         }
-
         composable(Routes.LaunchScreenViewMedium.route) {
             LaunchScreenMedium(navigationController, viewModel)
         }
-
         composable(Routes.LaunchScreenViewExpanded.route) {
             LaunchScreenExpanded(navigationController, viewModel)
         }
 
-        // Login views
+        // Login
         composable(Routes.LoginViewCompact.route) {
             LoginCompact(navigationController, viewModel)
         }
-
         composable(Routes.LoginViewMedium.route) {
             LoginMedium(navigationController, viewModel)
         }
-
         composable(Routes.LoginViewExpanded.route) {
             LoginExpanded(navigationController, viewModel)
         }
 
-        // Register views
+        // Register
         composable(Routes.RegisterViewCompact.route) {
             RegisterCompact(navigationController, viewModel)
         }
-
         composable(Routes.RegisterViewMedium.route) {
             RegisterMedium(navigationController, viewModel)
         }
-
         composable(Routes.RegisterViewExpanded.route) {
             RegisterExpanded(navigationController, viewModel)
         }
-
-
     }
 }

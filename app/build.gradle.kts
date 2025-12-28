@@ -57,6 +57,8 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation("androidx.compose.runtime:runtime-livedata:1.7.5")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation("androidx.compose.material3:material3-window-size-class"
+    )
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)

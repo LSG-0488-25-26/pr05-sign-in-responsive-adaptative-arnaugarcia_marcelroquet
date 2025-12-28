@@ -17,7 +17,7 @@ fun LaunchScreenMedium(navController: NavController, viewModel: AppModel) {
         modifier = Modifier
             .fillMaxSize()
             .clickable{
-                navController.navigate("MenuScreenView")
+                navController.navigate(Routes.EntryRegister.route)
             },
         contentAlignment = Alignment.Center
     ) {

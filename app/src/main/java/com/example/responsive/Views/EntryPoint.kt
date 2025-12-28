@@ -1,39 +1,49 @@
 package com.example.responsive.Views
 
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.responsive.Routes
 import com.example.responsive.viewModel.AppModel
 
-
 @Composable
 fun EntryPoint(
-    navigationController: NavController,
+    navigationController: NavHostController,
     viewModel: AppModel,
     windowSizeClass: WindowSizeClass
 ) {
-
-    val startDestination = when (windowSizeClass.widthSizeClass) {
-        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Compact ->
-            Routes.RegisterViewCompact.route
-
-        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Medium ->
-            Routes.RegisterViewMedium.route
-
-        else ->
-            Routes.RegisterViewExpanded.route
-    }
-
     NavHost(
-        navController = navigationController as NavHostController,
-        startDestination = startDestination
+        navController = navigationController,
+        startDestination = Routes.LaunchScreenViewCompact.route
     ) {
 
-        // Launch
+        composable(Routes.EntryRegister.route) {
+            val destination = when (windowSizeClass.widthSizeClass) {
+                WindowWidthSizeClass.Compact -> Routes.RegisterViewCompact.route
+                WindowWidthSizeClass.Medium -> Routes.RegisterViewMedium.route
+                else -> Routes.RegisterViewExpanded.route
+            }
+
+            navigationController.navigate(destination) {
+                popUpTo(Routes.EntryRegister.route) { inclusive = true }
+            }
+        }
+
+        composable(Routes.EntryLogin.route) {
+            val destination = when (windowSizeClass.widthSizeClass) {
+                WindowWidthSizeClass.Compact -> Routes.LoginViewCompact.route
+                WindowWidthSizeClass.Medium -> Routes.LoginViewMedium.route
+                else -> Routes.LoginViewExpanded.route
+            }
+
+            navigationController.navigate(destination) {
+                popUpTo(Routes.EntryLogin.route) { inclusive = true }
+            }
+        }
+
         composable(Routes.LaunchScreenViewCompact.route) {
             LaunchScreenCompact(navigationController, viewModel)
         }
@@ -44,7 +54,7 @@ fun EntryPoint(
             LaunchScreenExpanded(navigationController, viewModel)
         }
 
-        // Login
+        // Login Screens
         composable(Routes.LoginViewCompact.route) {
             LoginCompact(navigationController, viewModel)
         }
@@ -55,7 +65,7 @@ fun EntryPoint(
             LoginExpanded(navigationController, viewModel)
         }
 
-        // Register
+        // Register Screens
         composable(Routes.RegisterViewCompact.route) {
             RegisterCompact(navigationController, viewModel)
         }

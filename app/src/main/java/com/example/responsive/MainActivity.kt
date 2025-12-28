@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.navigation.NavHostController
 import com.example.responsive.Views.EntryPoint
 import com.example.responsive.ui.theme.ResponsiveTheme
 import com.example.responsive.viewModel.AppModel
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ResponsiveTheme {
 
-                val navController = rememberNavController()
+                val navController: NavHostController = rememberNavController()
                 val viewModel: AppModel = viewModel()
 
                 val windowSizeClass = calculateWindowSizeClass(this)

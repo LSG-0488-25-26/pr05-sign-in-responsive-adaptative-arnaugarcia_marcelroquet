@@ -16,6 +16,7 @@ import com.example.responsive.viewModel.AppModel
 
 @Composable
 fun LoginCompact(navController: NavController, viewModel: AppModel) {
+    viewModel.cleanError()
     val scrollState = rememberScrollState()
 
     BoxWithConstraints(
@@ -87,7 +88,7 @@ fun LoginCompact(navController: NavController, viewModel: AppModel) {
                 onClick = {
                     val error = viewModel.validateLogin()
                     if (error.isEmpty()) {
-                        navController.navigate("MenuScreenView")
+                        navController.navigate("LaunchScreenViewCompact")
                     }
                 },
                 modifier = Modifier

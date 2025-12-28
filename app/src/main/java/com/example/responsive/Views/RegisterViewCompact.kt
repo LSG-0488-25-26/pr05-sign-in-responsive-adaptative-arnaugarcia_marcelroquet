@@ -20,6 +20,7 @@ fun RegisterCompact(
     viewModel: AppModel
 ) {
     viewModel.cleanValues()
+    viewModel.cleanError()
     val scrollState = rememberScrollState()
 
     BoxWithConstraints(

@@ -33,5 +33,13 @@ class AppModel : ViewModel() {
         return errorMessage.value
     }
 
+    fun validateLogin(): String
+    {
+        errorMessage.value = when{
+            email.value.isEmpty() || !email.value.contains("@") -> "invalid email"
+            else -> "Unknown error"
+        }
+        return errorMessage.value
+    }
 
 }

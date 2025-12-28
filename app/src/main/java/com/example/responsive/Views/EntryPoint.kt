@@ -17,16 +17,9 @@ fun EntryPoint(
     windowSizeClass: WindowSizeClass
 ) {
 
-    val startDestination = when (windowSizeClass.widthSizeClass) {
-        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Compact ->
-            Routes.RegisterViewCompact.route
+    val startDestination = Routes.RegisterViewCompact.route
 
-        androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Medium ->
-            Routes.RegisterViewMedium.route
 
-        else ->
-            Routes.RegisterViewExpanded.route
-    }
 
     NavHost(
         navController = navigationController as NavHostController,
